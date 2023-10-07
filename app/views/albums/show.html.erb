@@ -1,10 +1,10 @@
-<%= link_to root_path, class: "opacity-90 hover:opacity-100" do %>
+<%= link_to root_path, class: "opacity-90 hover:opacity-100", data: {"turbo-transition" => "title"} do %>
   <span>Turbo</span> <span class="font-bold text-red-500">Music</span> <span>Drive</span>
   <hr class="my-4">
 <% end %>
 
 <div class="py-4 flex justify-items-start">
-  <div class="w-32 bg-gray-200 object-fill rounded-full overflow-hidden mr-4">
+  <div id="<%=dom_id(@album, :cover) %>" class="w-[170px] bg-gray-200 object-fill overflow-hidden mr-4" data-turbo-transition="cover">
     <%= image_tag @album.cover_url %>
   </div>
   <div class="flex flex-col justify-center">

@@ -2,7 +2,7 @@
 <div class="p-2 mx-1 mb-2 bg-opacity-10 rounded-md cursor-pointer w-40 flex-shrink-0">
   <div class="flex flex-col relative">
     <%= link_to album_path(album), class: "h-32 mb-1 relative hover:opacity-90 transition-opacity" do %>
-      <div class="h-full w-full bg-gray-200">
+      <div id="<%=dom_id(album, :cover) %>" class="h-full w-full bg-gray-200" data-turbo-transition="cover">
         <%- if album.cover_url.present? %>
           <%= image_tag album.cover_url, class: "w-full h-full object-cover" %>
         <%- end -%>

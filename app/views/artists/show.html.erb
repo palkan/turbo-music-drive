@@ -1,5 +1,5 @@
 <%# locals: (sort_tracks: params[:sort_tracks] || "a-z") -%>
-<%= link_to root_path, class: "opacity-90 hover:opacity-100" do %>
+<%= link_to root_path, class: "opacity-90 hover:opacity-100", data: {"turbo-transition" => "title"} do %>
   <span>Turbo</span> <span class="font-bold text-red-500">Music</span> <span>Drive</span>
   <hr class="my-4">
 <% end %>
