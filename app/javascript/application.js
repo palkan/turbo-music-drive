@@ -6,29 +6,47 @@ import Idiomorph from "idiomorph";
 
 let prevPath = window.location.pathname;
 
+const morphRender = (prevEl, newEl) => {
+  return Idiomorph.morph(prevEl, newEl, {
+    callbacks: {
+      beforeNodeMorphed: (fromEl, toEl) => {
+        if (typeof fromEl !== "object" || !fromEl.hasAttribute) return true;
+        if (fromEl.isEqualNode(toEl)) return false;
+
+        if (
+          fromEl.hasAttribute("data-morph-permanent") &&
+          toEl.hasAttribute("data-morph-permanent")
+        ) {
+          return false;
+        }
+
+        return true;
+      },
+    },
+  });
+};
+
 document.addEventListener("turbo:before-render", (event) => {
   Turbo.navigator.currentVisit.scrolled = prevPath === window.location.pathname;
   prevPath = window.location.pathname;
+
   event.detail.render = async (prevEl, newEl) => {
     await new Promise((resolve) => setTimeout(() => resolve(), 0));
-    Idiomorph.morph(prevEl, newEl, {
-      callbacks: {
-        beforeNodeMorphed: (fromEl, toEl) => {
-          if (typeof fromEl !== "object" || !fromEl.hasAttribute) return true;
-          if (fromEl.isEqualNode(toEl)) return false;
-
-          if (
-            fromEl.hasAttribute("data-morph-permanent") &&
-            toEl.hasAttribute("data-morph-permanent")
-          ) {
-            return false;
-          }
-
-          return true;
-        },
-      },
-    });
+    await morphRender(prevEl, newEl);
   };
+
+  if (document.startViewTransition) {
+    event.preventDefault();
+
+    document.startViewTransition(() => {
+      event.detail.resume();
+    });
+  }
+});
+
+document.addEventListener("turbo:load", () => {
+  if (document.head.querySelector('meta[name="view-transition"]'))
+    Turbo.cache.exemptPageFromCache();
 });
 
 document.addEventListener("turbo:before-frame-render", (event) => {
