@@ -1,0 +1,14 @@
+<%# locals: (album:, album_counter: nil, album_iteration: nil) -%>
+<div class="p-2 mx-1 mb-2 bg-opacity-10 rounded-md cursor-pointer w-40 flex-shrink-0">
+  <div class="flex flex-col relative">
+    <%= link_to album_path(album), class: "h-32 mb-1 relative hover:opacity-90 transition-opacity" do %>
+      <div class="h-full w-full bg-gray-200">
+        <%- if album.cover_url.present? %>
+          <%= image_tag album.cover_url, class: "w-full h-full object-cover" %>
+        <%- end -%>
+      </div>
+    <% end %>
+    <%= link_to album.title, album_path(album), class: "text-small text-ellipsis whitespace-nowrap overflow-hidden hover:text-red-500 transition-colors" %>
+    <%= link_to album.artist.name, artist_path(album.artist), class: "text-gray-500 text-xsmall text-ellipsis whitespace-nowrap overflow-hidden hover:text-red-500 transition-colors" %>
+  </div>
+</div>

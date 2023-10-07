@@ -1,0 +1,45 @@
+<%# locals: (sort_tracks: params[:sort_tracks] || "a-z") -%>
+<%= link_to root_path, class: "opacity-90 hover:opacity-100" do %>
+  <span>Turbo</span> <span class="font-bold text-red-500">Music</span> <span>Drive</span>
+  <hr class="my-4">
+<% end %>
+
+<div class="py-4 flex justify-items-start">
+  <div class="w-32 bg-gray-200 object-fill rounded-full overflow-hidden mr-4">
+    <%= image_tag @artist.cover_url %>
+  </div>
+  <div class="flex flex-col justify-center">
+    <div class="flex items-center">
+      <h1 class="text-header-2"><%= @artist.name %></h1>
+    </div>
+  </div>
+</div>
+
+<hr class="my-4">
+
+<div class=" -mx-3 pt-2 overflow-x-scroll flex-row flex relative">
+  <%= render @artist.albums.ordered %>
+</div>
+
+<hr class="my-4"/>
+
+<div>
+  <h2 class="mt-4 text-header-3">Tracks</h2>
+  <ul class="w-full border-b border-gray-200 flex text-plain mt-4">
+    <li class="inline-block px-4 text-plain border-b-2 border-white transition-colors <%= "text-red-500" if sort_tracks == "a-z" %>">
+      <%= link_to "A→Z", artist_path(sort_tracks: "a-z"), class: "hover:text-red-700 text-small pb-[2px]" %>
+    </li>
+    <li class="inline-block px-4 text-plain border-b-2 border-white transition-colors <%= "text-red-500" if sort_tracks == "z-a" %>">
+      <%= link_to "Z→Y", artist_path(sort_tracks: "z-a"), class: "hover:text-red-700 text-small pb-[2px]" %>
+    </li>
+    <li class="inline-block px-4 text-plain border-b-2 border-white transition-colors <%= "text-red-500" if sort_tracks == "old-new" %>">
+      <%= link_to "Old→New", artist_path(sort_tracks: "old-new"), class: "hover:text-red-700 text-small pb-[2px]" %>
+    </li>
+    <li class="inline-block px-4 text-plain border-b-2 border-white transition-colors <%= "text-red-500" if sort_tracks == "new-old" %>">
+      <%= link_to "New→Old", artist_path(sort_tracks: "new-old"), class: "hover:text-red-700 text-small pb-[2px]" %>
+    </li>
+  </ul>
+</div>
+<ul class="mt-2">
+  <%= render @artist.tracks.sorted(sort_tracks) %>
+</ul>

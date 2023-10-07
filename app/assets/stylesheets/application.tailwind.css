@@ -2,12 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
+@keyframes audio-wave-pulse {
+	0% {
+		transform: scaleY(1);
+		transform-origin: 50% 50%;
+	}
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
-  }
+	50% {
+		transform: scaleY(.7);
+		transform-origin: 50% 50%;
+	}
+
+	100% {
+		transform: scaleY(1);
+		transform-origin: 50% 50%;
+	}
 }
 
-*/
+@keyframes audio-wave-color {
+  0% {
+    fill: white;
+  }
+
+  25% {
+    fill: coral;
+  }
+
+	50% {
+    fill: blueviolet
+	}
+
+	75% {
+		fill: yellowgreen
+	}
+
+	100% {
+		fill: white
+	}
+}
+
+#audio-wave {
+  animation: audio-wave-color 4s infinite;
+}
+
+#audio-wave-1 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: .15s;
+}
+
+#audio-wave-2 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: .3s;
+}
+
+#audio-wave-3 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: .45s;
+}
+
+#audio-wave-4 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: .6s;
+}
+
+#audio-wave-5 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: .75s;
+}
+
+#audio-wave-6 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: .9s;
+}
+
+#audio-wave-7 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: 1.05s;
+}
+
+#audio-wave-8 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: 1.2s;
+}
+
+#audio-wave-9 {
+  animation: audio-wave-pulse 1s infinite;
+  animation-delay: 1.35s;
+}

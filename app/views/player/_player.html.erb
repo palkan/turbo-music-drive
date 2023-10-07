@@ -1,0 +1,21 @@
+<%# locals: (track: nil) -%>
+<div class="bg-black border-t border-red-500 w-full flex items-center sticky bottom-0 px-4 h-[70px]">
+  <div class="flex items-center flex-shrink-0">
+    <% if track %>
+      <%= render partial: "player/wave"%>
+    <% end %>
+  </div>
+  <div class="flex items-center ml-4 flex-grow">
+    <% if track %>
+      <div class="h-[60px] w-[60px] my-[5px] flex-shrink-0">
+        <%= image_tag track.album.cover_url, class: "w-full" %>
+      </div>
+      <div class="flex flex-col justify-items-center ml-2">
+        <span class="text-white text-small w-full">
+          <%= track.title %>
+        </span>
+        <%= link_to track.album.artist.name, artist_path(track.album.artist), class: "text-xsmall text-red-500 whitespace-nowrap transition-colors hover:text-red-700" %>
+      </div>
+    <% end %>
+  </div>
+</div>

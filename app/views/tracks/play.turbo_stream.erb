@@ -1,0 +1,3 @@
+<%= turbo_stream.update :player do %>
+  <%= render partial: "player/player", locals: {track: @track} %>
+<% end %>

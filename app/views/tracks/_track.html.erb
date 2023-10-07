@@ -1,0 +1,10 @@
+<%# locals: (track:, track_counter: nil, track_iteration: nil) -%>
+<li class="flex flex-row py-1 text-xsmall">
+  <span class="text-gray-600 w-6 text-right mr-2">
+    <%= track_counter + 1 %>
+  </span>
+  <%= button_to play_track_path(track), method: :post, form: {class: "flex-grow truncate text-black hover:text-red-500"} do %>
+    <%= track.title %>
+  <% end %>
+  <span class="text-gray-600 self-end w-10 ml-2 text-right"><%= seconds_to_duration(track.duration) %></span>
+</li>
