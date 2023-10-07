@@ -8,13 +8,20 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <% if params[:debug].present? %>
+      <style>
+        * {
+           animation: highlight 0.2s ease;
+        }
+      </style>
+    <% end %>
   </head>
 
   <body class="min-h-screen relative">
     <div class="h-full p-4 overflow-x-hidden text-plain" style="min-height: calc(100vh - 70px);">
       <%= yield %>
     </div>
-    <div id="player" data-turbo-permanent class="contents">
+    <div id="player" data-morph-permanent class="contents">
       <%= render partial: "player/player" %>
     </div>
   </body>
