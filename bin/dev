@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+if ! command -v hivemind &> /dev/null; then
+  if ! gem list foreman -i --silent; then
+    echo "Installing foreman..."
+    gem install foreman
+  fi
+
+  exec foreman start -f Procfile.dev
+else
+  hivemind Procfile.dev
+fi
