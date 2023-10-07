@@ -89,3 +89,12 @@
   animation: audio-wave-pulse 1s infinite;
   animation-delay: 1.35s;
 }
+
+@keyframes highlight {
+  0% {
+    outline: 1px solid red;
+  }
+  100% {
+    outline: 0px solid red;
+  }
+}
