@@ -1,5 +1,10 @@
 <%# locals: (track: nil) -%>
-<div class="bg-black border-t border-red-500 w-full flex items-center sticky bottom-0 px-4 h-[70px]">
+<div data-controller="player" data-player-duration-value="<%= track&.duration %>" data-player-track-value="<%= track&.id %>" class="bg-black border-t border-red-500 w-full flex items-center sticky bottom-0 px-4 h-[70px]">
+  <% if track %>
+    <div class="h-[4px] -top-[4px] absolute left-0 right-0 w-full bg-black z-20">
+      <div class="bg-red-500 h-full absolute left-0 transition-all ease-out" style="width:0%;" data-player-target="progress"></div>
+    </div>
+  <% end %>
   <div class="flex items-center flex-shrink-0">
     <% if track %>
       <%= render partial: "player/wave"%>
@@ -18,4 +23,11 @@
       </div>
     <% end %>
   </div>
+  <% if track %>
+    <div class="flex flex-shrink-0 justify-end text-small text-white">
+      <span class="text-red-500" data-player-target="time">00:00</span>
+      <span>&nbsp; / &nbsp;</span>
+      <span><%= seconds_to_duration(track.duration) %></span>
+    </div>
+  <% end %>
 </div>
