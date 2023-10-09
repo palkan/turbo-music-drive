@@ -9,4 +9,6 @@ class Artist < ApplicationRecord
   scope :search, ->(q) {
     where(arel_table[:name].lower.matches("%#{q.downcase}%"))
   }
+
+  def analytics(period: nil) = Analytics.new(self, period)
 end
