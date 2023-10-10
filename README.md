@@ -9,7 +9,7 @@ This is a demo application exploring [Turbo][] future enhancements (expected in 
 Here is the list of features and the corresponding PRs (so you can see how it was implemented):
 
 - [Morphing](https://github.com/palkan/turbo-music-drive/pull/1)
-- View transitions (_coming soon_)
+- [View transitions](https://github.com/palkan/turbo-music-drive/pull/2)
 
 ## Running locally
 
