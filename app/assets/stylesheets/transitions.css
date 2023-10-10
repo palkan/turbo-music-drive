@@ -1,20 +1,3 @@
-@keyframes full-slide-to-right {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
-}
-
-@keyframes full-slide-from-right {
-  from { transform: translateX(100%); }
-}
-
-::view-transition-old(player) {
-  animation: 500ms ease-in 0ms both full-slide-to-right, 500ms ease-out 50ms both fade-out;
-}
-
-::view-transition-new(player) {
-  animation: 300ms ease-out 100ms both full-slide-from-right, 300ms ease-in 0ms both fade-in;
-}
-
 @media (prefers-reduced-motion) {
   ::view-transition-group(*),
   ::view-transition-old(*),

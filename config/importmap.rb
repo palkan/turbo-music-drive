@@ -10,3 +10,4 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "utils/fake_audio", to: "utils/fake_audio.js"
 pin "stimulus-animated-number" # @4.1.0
+pin "turbo-view-transitions" # @0.1.0
