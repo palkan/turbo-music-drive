@@ -30,3 +30,9 @@ document.addEventListener("turbo:before-render", (event) => {
     });
   };
 });
+
+document.addEventListener("turbo:before-frame-render", (event) => {
+  event.detail.render = (prevEl, newEl) => {
+    Idiomorph.morph(prevEl, newEl.children, { morphStyle: "innerHTML" });
+  };
+});
