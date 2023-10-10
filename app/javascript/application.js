@@ -68,7 +68,7 @@ document.addEventListener("turbo:before-stream-render", (event) => {
         const [target] = streamEl.targetElements;
 
         if (target) {
-          performTransition(
+          return performTransition(
             target,
             streamEl.templateElement.content,
             async () => {
