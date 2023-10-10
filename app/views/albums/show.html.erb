@@ -4,8 +4,8 @@
 <% end %>
 
 <div class="py-4 flex justify-items-start">
-  <div id="<%=dom_id(@album, :cover) %>" class="w-[170px] bg-gray-200 object-fill overflow-hidden mr-4" data-turbo-transition="cover">
-    <%= image_tag @album.cover_url %>
+  <div id="<%=dom_id(@album, :cover) %>" class="w-[170px] h-[170px] bg-gray-200 object-fill overflow-hidden mr-4" data-turbo-transition="cover">
+    <%= image_tag @album.cover_url, class: "w-full h-full object-cover" %>
   </div>
   <div class="flex flex-col justify-center">
     <div class="flex flex-row items-center">
