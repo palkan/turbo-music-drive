@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  database: storage/production.sqlite3
+  database: storage/development.sqlite3

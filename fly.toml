@@ -1,0 +1,20 @@
+# fly.toml app configuration file generated for turbo-music-drive on 2023-10-09T17:42:37-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "turbo-music-drive"
+primary_region = "ewr"
+console_command = "/rails/bin/rails console"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[statics]]
+  guest_path = "/rails/public"
+  url_prefix = "/"
