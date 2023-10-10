@@ -1,5 +1,6 @@
 <%# locals: (track: nil) -%>
-<div data-controller="player" data-player-duration-value="<%= track&.duration %>" data-player-track-value="<%= track&.id %>" class="bg-black border-t border-red-500 w-full flex items-center sticky bottom-0 px-4 h-[70px]">
+<div data-controller="player" data-player-duration-value="<%= track&.duration %>" data-player-track-value="<%= track&.id %>" data-turbo-stream-transition="player"
+ class="bg-black border-t border-red-500 w-full flex items-center sticky bottom-0 px-4 h-[70px]">
   <% if track %>
     <div class="h-[4px] -top-[4px] absolute left-0 right-0 w-full bg-black z-20">
       <div class="bg-red-500 h-full absolute left-0 transition-all ease-out" style="width:0%;" data-player-target="progress"></div>

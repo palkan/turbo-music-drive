@@ -59,6 +59,30 @@ document.addEventListener("turbo:before-frame-render", (event) => {
   };
 });
 
+document.addEventListener("turbo:before-stream-render", (event) => {
+  if (shouldPerformTransition()) {
+    const fallbackToDefaultActions = event.detail.render;
+
+    event.detail.render = (streamEl) => {
+      if (streamEl.action == "update" || streamEl.action == "replace") {
+        const [target] = streamEl.targetElements;
+
+        if (target) {
+          performTransition(
+            target,
+            streamEl.templateElement.content,
+            async () => {
+              await fallbackToDefaultActions(streamEl);
+            },
+            { transitionAttr: "data-turbo-stream-transition" }
+          );
+        }
+      }
+      return fallbackToDefaultActions(streamEl);
+    };
+  }
+});
+
 document.addEventListener("turbo:load", () => {
   if (shouldPerformTransition()) Turbo.cache.exemptPageFromCache();
 });
