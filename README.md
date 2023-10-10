@@ -1,24 +1,32 @@
-# README
+# Turbo Music Drive
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a demo application exploring [Turbo][] future enhancements (expected in Turbo 8). **See it [live](https://turbo-music-drive.fly.dev)!**
 
-Things you may want to cover:
+|                        |                        |
+| ---------------------- | ---------------------- |
+| ![Home Page](public/screenshots/home-page.png) | ![Artist Page](public/screenshots/artist-page.png) |
 
-* Ruby version
+Here is the list of features and the corresponding PRs (so you can see how it was implemented):
 
-* System dependencies
+- Morphing (_coming soon_)
+- View transitions (_coming soon_)
 
-* Configuration
+## Running locally
 
-* Database creation
+All you need is Ruby 3.2+.
 
-* Database initialization
+Install dependencies:
 
-* How to run the test suite
+```sh
+bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Run a web server along with the TailwindCSS CLI to build (and re-build) styles:
 
-* Deployment instructions
+```sh
+bin/dev
+```
 
-* ...
+Go to [localhost:3000](http://localhost:3000) and enjoy!
+
+[Turbo]: https://turbo.hotwired.dev
