@@ -1,8 +1,11 @@
 <%= turbo_frame_tag dom_id(@artist, :analytics) do %>
   <div class="flex justify-end items-center">
     <div class="flex flex-col items-center mr-2">
-      <div class="text-7xl">
-        <%= @analytics.total %>
+      <div class="text-7xl"
+        data-controller="animated-number"
+        data-animated-number-end-value="<%= @analytics.total %>"
+        data-animated-number-duration-value="2000"
+      >
       </div>
       <h3 class="text-plain text-gray-600"># listeners</h3>
     </div>
