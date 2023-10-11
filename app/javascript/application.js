@@ -1,5 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails";
+import { StreamActions } from "@hotwired/turbo";
 import "controllers";
 
 import Idiomorph from "idiomorph";
@@ -85,4 +86,17 @@ document.addEventListener("turbo:before-stream-render", (event) => {
 
 document.addEventListener("turbo:load", () => {
   if (shouldPerformTransition()) Turbo.cache.exemptPageFromCache();
+});
+
+const sessionID = Math.random().toString(36).slice(4);
+
+StreamActions.refresh = function () {
+  if (this.getAttribute("session-id") !== sessionID) {
+    window.Turbo.cache.exemptPageFromPreview();
+    window.Turbo.visit(window.location.href, { action: "replace" });
+  }
+};
+
+document.addEventListener("turbo:before-fetch-request", (event) => {
+  event.detail.fetchOptions.headers["X-Turbo-Session-ID"] = sessionID;
 });

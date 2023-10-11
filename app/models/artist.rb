@@ -2,6 +2,8 @@ class Artist < ApplicationRecord
   has_many :albums, dependent: :destroy
   has_many :tracks, through: :albums
 
+  broadcasts_refreshes
+
   validates :name, presence: true, uniqueness: true
 
   normalizes :name, with: -> { _1.squish }
