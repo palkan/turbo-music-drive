@@ -20,6 +20,10 @@
 
   <body class="min-h-screen relative">
     <div class="h-full p-4 overflow-x-hidden text-plain" style="min-height: calc(100vh - 70px);">
+      <div data-controller="view-transitions-alert" class="hidden flex absolute right-0 top-0 text-xsmall w-1/4 mt-2 bg-orange-700 rounded-md text-white mr-2 p-2">
+        Your browser doesn't seem to support View Transitions. For ultimate experience, consider using Chrome or Edge.
+        <span data-action="click->view-transitions-alert#hide" role="button" class="cursor-pointer font-mono opacity-70 hover:opacity-100">x</span>
+      </div>
       <%= yield %>
     </div>
     <div id="player" data-morph-permanent class="contents">
