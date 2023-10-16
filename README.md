@@ -11,6 +11,8 @@ Here is the list of features and the corresponding PRs (so you can see how it wa
 - [Morphing](https://github.com/palkan/turbo-music-drive/pull/1)
 - [View transitions](https://github.com/palkan/turbo-music-drive/pull/2)
 
+> <img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Read more in Evil Martians' [The Future of Full-Stack Rails: Turbo Morph Drive][the-post-1] blog post.
+
 ## Running locally
 
 All you need is Ruby 3.2+.
@@ -30,3 +32,4 @@ bin/dev
 Go to [localhost:3000](http://localhost:3000) and enjoy!
 
 [Turbo]: https://turbo.hotwired.dev
+[the-post-1]: https://evilmartians.com/chronicles/the-future-of-full-stack-rails-turbo-morph-drive
