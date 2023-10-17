@@ -7,6 +7,14 @@
   from { transform: translateY(100%); }
 }
 
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
 ::view-transition-old(player) {
   animation: 500ms ease-in 0ms both full-slide-down, 500ms ease-out 50ms both fade-out;
 }
