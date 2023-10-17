@@ -15,6 +15,46 @@
   animation: 300ms ease-out 100ms both full-slide-up, 300ms ease-in 0ms both fade-in;
 }
 
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  /* 10% {
+    transform: translateX(-10px);
+  } */
+  /* 20% {
+    transform: translateX(10px);
+  } */
+  30% {
+    transform: translateX(-10px);
+  }
+  /* 40% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  } */
+  60% {
+    transform: translateX(10px);
+  }
+  /* 70% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  } */
+  90% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+::view-transition-new(cover) {
+  animation: 300ms ease-in 0ms both shake;
+}
+
 @media (prefers-reduced-motion) {
   ::view-transition-group(*),
   ::view-transition-old(*),
