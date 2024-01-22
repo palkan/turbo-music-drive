@@ -39,3 +39,8 @@
 
 # We want to distribute all data along with the demo project
 !/storage/development.sqlite3
+
+# ruby.wasm stuff
+build/
+rubies/
+.wasm/*.wasm

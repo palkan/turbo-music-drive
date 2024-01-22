@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../.wasm/Gemfile", __dir__)
+
+require "bundler/setup"
+
+require "ruby_wasm"
+require "ruby_wasm/cli"
+
+# Add excluded gems
+RubyWasm::Packager::EXCLUDED_GEMS << "bigdecimal"
+RubyWasm::Packager::EXCLUDED_GEMS << "nio4r"
+RubyWasm::Packager::EXCLUDED_GEMS << "io-console"
+RubyWasm::Packager::EXCLUDED_GEMS << "psych"
+
+RubyWasm::CLI.new(stdout: $stdout, stderr: $stderr).run(ARGV)

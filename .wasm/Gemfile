@@ -1,0 +1,16 @@
+source "https://rubygems.org"
+
+ruby "3.2.2"
+
+gem "turbo-music-drive", path: ".."
+gem "js" if ENV["JS"] == "true"
+
+# Use nulldb as the database for Active Record
+gem "activerecord-nulldb-adapter"
+
+# Time zone info for ActiveSupport
+gem "tzinfo-data"
+
+group :development, :test do
+  gem "ruby_wasm", "~> 2.5"
+end
