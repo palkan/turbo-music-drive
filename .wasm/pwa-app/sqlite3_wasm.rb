@@ -1,0 +1,105 @@
+module SQLite3
+  module Database
+    def self.quote(s) = s.gsub("'", "''")
+  end
+end
+
+module ActiveRecord
+  module ConnectionAdapters
+    class SQLite3WasmAdapter < SQLite3Adapter
+      class ExternalInterface
+        def initialize
+        end
+
+        def busy_timeout(...) = nil
+
+        def execute(sql)
+          Statement.new(sql).result
+        end
+
+        def prepare(sql) = Statement.new(sql)
+
+        def closed? = false
+      end
+
+      class Statement
+        def initialize(sql)
+          @sql = sql
+          @columns = nil
+          @rows = nil
+        end
+
+        def close = nil
+
+        def columns
+          execute
+          @columns
+        end
+
+        def result
+          execute
+          @rows.map { @columns.zip(_1).to_h }.freeze
+        end
+
+        def to_a
+          execute
+          @rows
+        end
+
+        def execute
+          return if @rows
+
+          res = JS.global[:sqlite4rails].exec(@sql)
+          # unwrap column names
+          cols = res[:cols].to_a.map(&:to_s)
+          # unwrap row values
+          rows = res[:rows].to_a.map do |row|
+            row.to_a.map do |val|
+              str_val = val.to_s
+              next str_val if val.typeof == "string"
+              next str_val == "true" if val.typeof == "boolean"
+              
+              # handle integers and floats
+              next str_val.include?(".") ? val.to_f : val.to_i if val.typeof == "number"
+
+              str_val
+            end
+          end
+
+          @columns = cols
+          @rows = rows
+        end
+
+        def reset!
+          @rows = nil
+          @columns = nil
+        end
+      end
+
+      class << self
+        attr_accessor :external_interface
+
+        def database_exists?(config)
+          true
+        end
+
+        def new_client(...) = external_interface || ExternalInterface.new
+      end
+
+      attr_reader :external_interface
+
+      def initialize(...)
+        AbstractAdapter.instance_method(:initialize).bind_call(self, ...)
+
+        @prepared_statements = false
+        @memory_database = false
+        @connection_parameters = @config.merge(database: @config[:database].to_s, results_as_hash: true)
+        @use_insert_returning = @config.key?(:insert_returning) ? self.class.type_cast_config_to_boolean(@config[:insert_returning]) : true
+      end
+
+      def database_exists? = true
+
+      def database_version = SQLite3Adapter::Version.new("3.45.1")
+    end
+  end
+end

@@ -1,0 +1,21 @@
+{
+  "name": "vite-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.3.0-beta.2",
+    "vite-plugin-pwa": "^0.18.1"
+  },
+  "dependencies": {
+    "@bjorn3/browser_wasi_shim": "^0.2.19",
+    "@ruby/wasm-wasi": "^2.4.1",
+    "@sqlite.org/sqlite-wasm": "3.45.1-build1",
+    "set-cookie-parser": "^2.6.0"
+  }
+}
