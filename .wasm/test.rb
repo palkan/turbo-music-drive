@@ -3,7 +3,7 @@ require "/bundle/setup"
 ENV["ACTIVE_RECORD_ADAPTER"] = "nulldb"
 ENV["RAILS_ENV"] = "production"
 
-require "turbo_music_drive"
+require "/rails/lib/turbo_music_drive"
 
 # puts Album.count
 

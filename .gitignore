@@ -43,4 +43,4 @@
 # ruby.wasm stuff
 build/
 rubies/
-.wasm/*.wasm
+*.wasm
