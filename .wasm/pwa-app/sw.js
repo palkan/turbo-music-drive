@@ -39,6 +39,13 @@ self.addEventListener("fetch", (event) => {
 });
 
 const respondWithRails = async (event) => {
+  let vm = self.RailsVM;
+
+  if (!vm) {
+    await installApp();
+    vm = self.RailsVM;
+  }
+
   const railsURL = event.request.url.replace("https://", "http://");
   const railsHeaders = {};
 
