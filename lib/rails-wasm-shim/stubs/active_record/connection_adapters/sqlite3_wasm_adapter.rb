@@ -30,12 +30,47 @@ module ActiveRecord
         def busy_timeout(...) = nil
 
         def execute(sql)
-          Statement.new(self, sql).result
+          @last_statement = Statement.new(self, sql)
+          @last_statement.result
         end
 
         def prepare(sql) = Statement.new(self, sql)
 
         def closed? = false
+
+        def transaction(mode = nil)
+          # deferred doesn't work 🤷‍♂️
+          mode = nil if mode.nil?
+          execute "begin #{mode} transaction"
+
+          if block_given?
+            abort = false
+            begin
+              yield self
+            rescue
+              abort = true
+              raise
+            ensure
+              abort and rollback or commit
+            end
+          else
+            true
+          end
+        end
+
+        def commit
+          execute "commit transaction"
+          true
+        end
+
+        def rollback
+          execute "rollback transaction"
+          true
+        end
+
+        def changes
+          @last_statement&.result&.size || 0
+        end
       end
 
       class Statement
