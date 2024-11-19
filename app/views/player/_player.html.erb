@@ -1,34 +1,6 @@
 <%# locals: (track: nil) -%>
-<div data-controller="player" data-player-duration-value="<%= track&.duration %>" data-player-track-value="<%= track&.id %>" data-turbo-stream-transition="player"
- class="bg-black border-t border-red-500 w-full flex items-center sticky bottom-0 px-4 h-[70px]">
-  <% if track %>
-    <div class="h-[4px] -top-[4px] absolute left-0 right-0 w-full bg-black z-20">
-      <div class="bg-red-500 h-full absolute left-0 transition-all ease-out" style="width:0%;" data-player-target="progress"></div>
-    </div>
-  <% end %>
-  <div class="flex items-center flex-shrink-0">
-    <% if track %>
-      <%= render partial: "player/wave"%>
-    <% end %>
-  </div>
-  <div class="flex items-center ml-4 flex-grow">
-    <% if track %>
-      <div class="h-[60px] w-[60px] my-[5px] flex-shrink-0">
-        <%= image_tag track.album.cover_url, class: "w-full" %>
-      </div>
-      <div class="flex flex-col justify-items-center ml-2">
-        <span class="text-white text-small w-full">
-          <%= track.title %>
-        </span>
-        <%= link_to track.album.artist.name, artist_path(track.album.artist), class: "text-xsmall text-red-500 whitespace-nowrap transition-colors hover:text-red-700" %>
-      </div>
-    <% end %>
-  </div>
-  <% if track %>
-    <div class="flex flex-shrink-0 justify-end text-small text-white">
-      <span class="text-red-500" data-player-target="time">00:00</span>
-      <span>&nbsp; / &nbsp;</span>
-      <span><%= seconds_to_duration(track.duration) %></span>
-    </div>
-  <% end %>
-</div>
+<% if track %>
+  <%= turbo_mount("Player", props: {track: {title: track.title, artist: track.artist.name, artwork: track.album.cover_url, url: track.url, artist_url: artist_path(track.artist)}}, class: "sticky bottom-0 h-[80px]", data: {"turbo-stream-transition" => "player"}) %>
+<% else %>
+  <div class="sticky bottom-0 h-[80px]" data-turbo-stream-transition="player"></div>
+<% end %>

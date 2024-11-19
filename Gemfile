@@ -15,6 +15,9 @@ gem "puma", ">= 6.0"
 # Use Vite to manage assets — this is the way! [https://vite-ruby.netlify.app/guide/rails.html]
 gem "vite_rails"
 
+# Mount JS components into Rails views [https://github.com/skryukov/turbo-mount]
+gem "turbo-mount"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 

@@ -32,4 +32,6 @@ class Track < ApplicationRecord
   scope :search, ->(q) {
     where(arel_table[:title].lower.matches("%#{q.downcase}%"))
   }
+
+  def url = @url ||= "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-#{(1..17).to_a.sample}.mp3"
 end

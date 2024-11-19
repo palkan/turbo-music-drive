@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .custom-player.rhap_container {
+    @apply bg-transparent shadow-none p-0 w-full;
+  }
+
+  .custom-player .rhap_time {
+    @apply text-gray-400 text-sm;
+  }
+
+  .custom-player .rhap_progress-filled {
+    @apply bg-red-500;
+  }
+
+  .custom-player .rhap_progress-indicator {
+    @apply bg-red-500 w-3 h-3 -top-1 -ml-1.5;
+  }
+
+  .custom-player .rhap_progress-bar {
+    @apply bg-white/10 h-1;
+  }
+
+  .custom-player .rhap_download-progress {
+    @apply bg-white/5 h-1;
+  }
+
+  .custom-player .rhap_volume-indicator {
+    @apply bg-red-500 w-3 h-3 -ml-1.5;
+  }
+
+  .custom-player .rhap_volume-bar {
+    @apply bg-white/10 h-1;
+  }
+
+  .custom-player .rhap_button-clear {
+    @apply text-white transition-colors duration-200 hover:text-red-500;
+  }
+
+  .custom-player .rhap_main-controls-button {
+    @apply text-white transition-colors duration-200 hover:text-red-500;
+  }
+
+  .custom-player .rhap_volume-button {
+    @apply text-white transition-colors duration-200 hover:text-red-500;
+  }
+
+  .custom-player .rhap_progress-section {
+    @apply m-0;
+  }
+
+  .custom-player .rhap_controls-section {
+    @apply m-0 px-4;
+  }
+
+  .custom-player .rhap_additional-controls,
+  .custom-player .rhap_rewind-button,
+  .custom-player .rhap_forward-button {
+    @apply hidden;
+  }
+
+  .custom-player .rhap_play-pause-button {
+    @apply text-[40px] w-10 h-10;
+  }
+}
