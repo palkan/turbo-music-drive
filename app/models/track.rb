@@ -1,5 +1,6 @@
 class Track < ApplicationRecord
   belongs_to :album, counter_cache: true
+  has_one :artist, through: :album
 
   validates :title, length: {maximum: 255}
 
