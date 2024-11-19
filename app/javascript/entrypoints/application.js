@@ -1,9 +1,12 @@
+import "../styles/transitions.css";
+import "../styles/tailwind.css";
+
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails";
 import { StreamActions } from "@hotwired/turbo";
-import "controllers";
+import "../controllers";
 
-import Idiomorph from "idiomorph";
+import { Idiomorph } from "idiomorph/dist/idiomorph.esm";
 import {
   shouldPerformTransition,
   performTransition,

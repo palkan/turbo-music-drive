@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import FakeAudio from "utils/fake_audio";
+import FakeAudio from "../utils/fake_audio";
 
 function secondsToDuration(num) {
   let mins = Math.floor(num / 60);

@@ -1,4 +1,5 @@
 import { Application } from "@hotwired/stimulus";
+import { registerControllers } from "stimulus-vite-helpers";
 
 const application = Application.start();
 
@@ -6,6 +7,5 @@ const application = Application.start();
 application.debug = new URLSearchParams(window.location.search).has("debug");
 window.Stimulus = application;
 
-// Eager load all controllers defined in the import map under controllers/**/*_controller
-import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading";
-eagerLoadControllersFrom("controllers", application);
+const controllers = import.meta.glob('./**/*_controller.js', { eager: true });
+registerControllers(application, controllers);
