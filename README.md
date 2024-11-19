@@ -1,6 +1,6 @@
 # Turbo Music Drive
 
-This is a demo application exploring [Turbo][] future enhancements (expected in Turbo 8). **See it [live](https://turbo-music-drive.fly.dev)!**
+This is a demo application exploring [Turbo][] features and extensions. **See it [live](https://turbo-music-drive.fly.dev)!**
 
 |                        |                        |
 | ---------------------- | ---------------------- |
@@ -11,11 +11,11 @@ Here is the list of features and the corresponding PRs (so you can see how it wa
 - [Morphing](https://github.com/palkan/turbo-music-drive/pull/1)
 - [View transitions](https://github.com/palkan/turbo-music-drive/pull/2)
 
-> <img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Read more in Evil Martians' [The Future of Full-Stack Rails: Turbo Morph Drive][the-post-1] blog post.
+> <img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Read more in Evil Martians' [The Future of Full-Stack Rails][the-post-1] blog series.
 
 ## Running locally
 
-All you need is Ruby 3.2+.
+All you need is Ruby 3.3+.
 
 Install dependencies:
 
